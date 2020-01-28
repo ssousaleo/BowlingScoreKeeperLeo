@@ -6,6 +6,10 @@ public class Game {
 	private static final int MAX_FRAMES = 10;
 
 	public void roll(int throw1, int throw2) {
+		if (isComplete()) {
+			throw new InvalidGameException("Attemp to add an extra frame to a complete game");
+		}
+		
 		frames.add(new Frame(throw1, throw2));
 	}
 

@@ -57,6 +57,23 @@ public class BowlingScoreKeeperTest {
 		
 	}
 	
+	@Test
+	public void notPossibleToAddAnotherFrameToCompleteGame() {
+		Game game = this.getCompleteGame();
+		
+		try {
+			game.roll(3, 5);
+			fail("Should no allow to add an extra game to a complete game");
+			
+		} catch(InvalidGameException e) {
+			assertThat(e.getMessage(), is("Attemp to add an extra frame to a complete game"));
+		}
+		
+		
+		assertThat(game.isComplete(), is(true));
+		
+	}
+	
 	private Game getCompleteGame() {
 		Game game = new Game();
 		
