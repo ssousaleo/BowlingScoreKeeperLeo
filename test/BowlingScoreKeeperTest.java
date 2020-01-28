@@ -74,6 +74,19 @@ public class BowlingScoreKeeperTest {
 		
 	}
 	
+	@Test
+	public void canAccessFrameFromGame() {
+		Game game = this.getCompleteGame();
+		
+		
+		assertThat(game.getFrame(2).getThrow1(), is(3));
+		assertThat(game.getFrame(2).getThrow2(), is(6));
+		
+		assertThat(game.getFrame(10).getThrow1(), is(2));
+		assertThat(game.getFrame(10).getThrow2(), is(6));
+		
+	}
+	
 	private Game getCompleteGame() {
 		Game game = new Game();
 		
