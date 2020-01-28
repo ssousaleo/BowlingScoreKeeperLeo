@@ -48,6 +48,15 @@ public class BowlingScoreKeeperTest {
 		
 	}
 	
+	@Test
+	public void recognizeACompleteGame() {
+		Game game = this.getCompleteGame();
+		
+		
+		assertThat(game.isComplete(), is(true));
+		
+	}
+	
 	private Game getCompleteGame() {
 		Game game = new Game();
 		
