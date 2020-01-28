@@ -4,6 +4,9 @@ public class Frame {
 	private int throw2;
 
 	public Frame(int throw1, int throw2) {
+		if (throw1 < 0 || throw2 < 0) {
+			throw new InvalidFrameException("Do not add a negative throw!");
+		}
 		this.throw1 = throw1;
 		this.throw2 = throw2;
 	}

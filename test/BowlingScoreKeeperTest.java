@@ -87,6 +87,19 @@ public class BowlingScoreKeeperTest {
 		
 	}
 	
+	@Test
+	public void shouldNotAllowNegativeFrame() {
+		Game game = new Game();
+		
+		try {
+			game.roll(-1, 4);
+			fail("Throw cannot be negative");
+			
+		} catch(InvalidFrameException e) {
+			assertThat(e.getMessage(), is("Do not add a negative throw!"));
+		}
+	}
+	
 	private Game getCompleteGame() {
 		Game game = new Game();
 		
