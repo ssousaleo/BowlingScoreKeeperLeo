@@ -190,7 +190,7 @@ public class BowlingScoreKeeperTest {
 	public void theSumOfFrameScoresWithFrameSpareScoreProperlyComputed() {
 		Game game = getCompleteGameWithSpare();
 		
-		//assertThat(game.getScore(), is(88));
+		assertThat(game.getScore(), is(88));
 	}
 	
 	
@@ -231,7 +231,7 @@ public class BowlingScoreKeeperTest {
 	private Game getCompleteGameWithSpare() {
 		Game game = new Game();
 		
-		game.roll(10, 0);
+		game.roll(1, 9);
 		game.roll(3, 6);
 		game.roll(7, 2);
 		game.roll(3, 6);
