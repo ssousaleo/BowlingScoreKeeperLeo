@@ -41,6 +41,13 @@ public class Game {
 				throw new InCompleteStrikeException("Strike is incomplete!");
 			}
 			
+			if (getFrame(frameIndex + 1).isStrike()) {
+				return getFrame(frameIndex).getScore() + 
+						getFrame(frameIndex + 1).getScore() +
+						getFrame(frameIndex + 2).getThrow1();
+				
+			}
+			
 			return getFrame(frameIndex).getScore() + getFrame(frameIndex + 1).getScore(); 
 		}
 		

@@ -250,6 +250,19 @@ public class BowlingScoreKeeperTest {
 		assertThat(game.getFrameScore(2), is(17));
 	}
 	
+	@Test
+	public void calculateScoreForTwoStrikesInARow() {
+		Game game = new Game();
+		
+		game.roll(10, 0);
+		game.roll(10, 0);
+		game.roll(7, 2); 
+		
+		assertThat(game.getFrameScore(1), is(27));
+		assertThat(game.getFrameScore(2), is(19));
+	}
+	
+	
 	private Game getCompleteGame() {
 		Game game = new Game();
 		
