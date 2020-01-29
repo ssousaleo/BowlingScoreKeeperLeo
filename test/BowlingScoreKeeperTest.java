@@ -262,6 +262,13 @@ public class BowlingScoreKeeperTest {
 		assertThat(game.getFrameScore(2), is(19));
 	}
 	
+	@Test
+	public void calculateScoreForTwoSparesInARow() {
+		Game game = aCompleteGameWithTwoSparesInARow();
+		
+		assertThat(game.getScore(), is(98));
+	}
+	
 	
 	private Game getCompleteGame() {
 		Game game = new Game();
@@ -314,11 +321,11 @@ public class BowlingScoreKeeperTest {
 		return game;
 	}
 	
-	private Game aCompleteGameWithAStrikeFollowedByASpare() {
+	private Game aCompleteGameWithTwoSparesInARow() {
 		Game game = new Game();
 		
-		game.roll(10, 0);
-		game.roll(4, 6);
+		game.roll(8, 2);
+		game.roll(5, 5);
 		game.roll(7, 2);
 		game.roll(3, 6);
 		game.roll(4, 4);
@@ -328,7 +335,7 @@ public class BowlingScoreKeeperTest {
 		game.roll(8, 1);
 		game.roll(2, 6);
 		
-		// has score 103
+		// has score 98
 		return game;	
 	}
 
