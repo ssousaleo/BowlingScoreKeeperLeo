@@ -18,24 +18,35 @@ public class BowlingScoreKeeperTest {
 	}
 
 	@Test
-	public void test() {
+	public void template() {
 		
 	}
 	
-	@Test
-	public void aFrameHasTwoThrows() {
-		Frame frame = new Frame(2, 4);
-		
-		assertThat(frame.getThrow1(), is(2));
-		assertThat(frame.getThrow2(), is(4));
-	}
 	
-	@Test
-	public void aScoreIsTheSumOfItsThrow() {
-		Frame frame = new Frame(2, 4);
-		
-		assertThat(frame.getScore(), is(6));
-		
-	}
+	
+	
+	
+	
+	
+	
+	
+//	private Game getCompleteGame() {
+//		Game g = new Game();
+//		
+//		g.roll(1, 5);
+//		g.roll(3, 6);
+//		g.roll(7, 2);
+//		g.roll(3, 6);
+//		g.roll(4, 4);
+//		g.roll(5, 3);
+//		g.roll(3, 3);
+//		g.roll(4, 5);
+//		g.roll(8, 1);
+//		g.roll(2, 6);
+//		
+//		return g;
+//	}
+	
+	
 
 }
