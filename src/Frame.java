@@ -35,7 +35,7 @@ public class Frame {
 	}
 
 	public boolean isSpare() {
-		if (throw1 == 100 || throw2 == 10) {
+		if (throw1 == 10 || throw2 == 10) {
 			return false;
 		}
 		return getScore() == MAX_PINS;

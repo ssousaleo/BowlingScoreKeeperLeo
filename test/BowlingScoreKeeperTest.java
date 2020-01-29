@@ -270,7 +270,7 @@ public class BowlingScoreKeeperTest {
 	}
 	
 	@Test
-	public void calculateScoreForSparesAsTheLastFrameWithoutBonusThrow() {
+	public void calculateScoreForSpareAsTheLastFrameWithoutBonusThrow() {
 		Game game = getCompleteGameWithLastFrameAsASpare();
 		
 		assertThat(game.getScore(), is(73));
@@ -282,6 +282,15 @@ public class BowlingScoreKeeperTest {
 		game.addBonusThrow(7);
 		assertThat(game.getFrameScore(10), is(17));
 		assertThat(game.getScore(), is(90));
+	}
+	
+	@Test
+	public void calculateScoreForStrikeAsTheLastFrameWithoutBonusThrow() {
+		Game game = getCompleteGameWithLastFrameAsAStrike();
+		game.addBonusThrow(7);
+		game.addBonusThrow(2);
+		
+		assertThat(game.getScore(), is(92));
 	}
 	
 	
@@ -367,6 +376,23 @@ public class BowlingScoreKeeperTest {
 		game.roll(4, 5);
 		game.roll(8, 1);
 		game.roll(2, 8);
+		
+		return game;
+	}
+	
+	private Game getCompleteGameWithLastFrameAsAStrike() {
+		Game game = new Game();
+		
+		game.roll(1, 5);
+		game.roll(3, 6);
+		game.roll(7, 2);
+		game.roll(3, 6);
+		game.roll(4, 4);
+		game.roll(5, 3);
+		game.roll(3, 3);
+		game.roll(4, 5);
+		game.roll(8, 1);
+		game.roll(10, 0);
 		
 		return game;
 	}

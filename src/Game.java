@@ -4,7 +4,8 @@ import java.util.ArrayList;
 public class Game {
 	private List<Frame> frames = new ArrayList<Frame>();
 	private static final int MAX_FRAMES = 10;
-	private int bonus = 0;
+	private int bonus1 = 0;
+	private int bonus2 = 0;
 
 	public void roll(int throw1, int throw2) {
 		if (isComplete()) {
@@ -29,7 +30,11 @@ public class Game {
 			sum += getFrameScore(i);
 		}
 		
-		if (frames.get(frames.size() - 1).isSpare() && bonus != 0) {
+		if (frames.get(frames.size() - 1).isSpare() && bonus1 != 0) {
+			sum += getFrameScore(frames.size());
+		}
+		
+		if (frames.get(frames.size() - 1).isStrike() && bonus1 != 0 & bonus2 != 0) {
 			sum += getFrameScore(frames.size());
 		} 
 		
@@ -44,6 +49,9 @@ public class Game {
 	public int getFrameScore(int frameIndex) {
 		if (getFrame(frameIndex).isStrike()) {
 			if (frameIndex == frames.size()) {
+				if (bonus1 != 0 && bonus2 != 0) {
+					return getFrame(frameIndex).getScore() + bonus1 + bonus2;
+				}
 				throw new InCompleteStrikeException("Strike is incomplete!");
 			}
 			
@@ -59,8 +67,8 @@ public class Game {
 		
 		if (getFrame(frameIndex).isSpare()) {
 			if (frameIndex == frames.size()) {
-				if (bonus != 0 ) {
-					return getFrame(frameIndex).getScore() + bonus;
+				if (bonus1 != 0 ) {
+					return getFrame(frameIndex).getScore() + bonus1;
 				}
 				throw new InCompleteSpareException("Spare is incomplete!");
 			}
@@ -72,7 +80,14 @@ public class Game {
 	}
 
 	public void addBonusThrow(int i) {
-		bonus = i;
+		if (bonus1 == 0) {
+			bonus1 = i;
+		} else {
+			if (bonus2 == 0) {
+				bonus2 = i;
+			}
+		}
+		
 	}
 
 
