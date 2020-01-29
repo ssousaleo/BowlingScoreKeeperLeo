@@ -208,6 +208,13 @@ public class BowlingScoreKeeperTest {
 		
 	}
 	
+	@Test 
+	public void canScoreAPartialGameIfLastIsNotSpareOrStrike() {
+		Game g = new Game();
+		g.roll(1, 5);
+		g.roll(3, 6);	
+		assertEquals(15, g.getScore());
+	}
 	
 	private Game getCompleteGame() {
 		Game game = new Game();
