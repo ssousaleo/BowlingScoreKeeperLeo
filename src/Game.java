@@ -38,6 +38,12 @@ public class Game {
 			
 			return getFrame(frameIndex).getScore() + getFrame(frameIndex + 1).getScore(); 
 		}
+		
+		if (getFrame(frameIndex).isSpare()) {
+			
+			return getFrame(frameIndex).getScore() + getFrame(frameIndex + 1).getThrow1(); 
+		}
+		
 		return getFrame(frameIndex).getScore();
 	}
 

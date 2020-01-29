@@ -169,6 +169,30 @@ public class BowlingScoreKeeperTest {
 		
 	}
 	
+	@Test
+	public void checkIfTheFrameIsSpare() {
+		Frame frame = new Frame(1, 9);
+		
+		assertThat(frame.isSpare(), is(true));
+	}
+	
+	@Test
+	public void properScoreOfSpareEqualsToTwoThrowsPlusNextThrow() {
+		Game game = new Game();
+		
+		game.roll(1, 9);
+		game.roll(3, 6);
+		
+		assertThat(game.getFrameScore(1), is(13));
+	}
+	
+	@Test
+	public void theSumOfFrameScoresWithFrameSpareScoreProperlyComputed() {
+		Game game = getCompleteGameWithSpare();
+		
+		//assertThat(game.getScore(), is(88));
+	}
+	
 	
 	private Game getCompleteGame() {
 		Game game = new Game();
@@ -188,6 +212,23 @@ public class BowlingScoreKeeperTest {
 	}
 	
 	private Game getCompleteGameWithStrike() {
+		Game game = new Game();
+		
+		game.roll(10, 0);
+		game.roll(3, 6);
+		game.roll(7, 2);
+		game.roll(3, 6);
+		game.roll(4, 4);
+		game.roll(5, 3);
+		game.roll(3, 3);
+		game.roll(4, 5);
+		game.roll(8, 1);
+		game.roll(2, 6);
+		
+		return game;
+	}
+	
+	private Game getCompleteGameWithSpare() {
 		Game game = new Game();
 		
 		game.roll(10, 0);
