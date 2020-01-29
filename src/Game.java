@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Game {
 	private List<Frame> frames = new ArrayList<Frame>();
 	private static final int MAX_FRAMES = 10;
+	private int bonus = 0;
 
 	public void roll(int throw1, int throw2) {
 		if (isComplete()) {
@@ -11,7 +12,7 @@ public class Game {
 		}
 		
 		frames.add(new Frame(throw1, throw2));
-	}
+	} 
 
 	public Frame getFrame(int frameIndex) {
 		return frames.get(frameIndex - 1);
@@ -24,14 +25,19 @@ public class Game {
 	public int getScore() {
 		int sum = 0;
 		
-		for (int i = 1; i < frames.size(); i++) {
+		for (int i = 1; i <= frames.size() - 1; i++) {
 			sum += getFrameScore(i);
 		}
 		
-		if (!frames.get(frames.size() - 1).isSpare() &&
+		if (frames.get(frames.size() - 1).isSpare() && bonus != 0) {
+			sum += getFrameScore(frames.size());
+		} 
+		
+		else if (!frames.get(frames.size() - 1).isSpare() &&
 			!frames.get(frames.size() - 1).isStrike()) {
 			sum += frames.get(frames.size() - 1).getScore();
 		}
+		
 		return sum;
 	}
 
@@ -53,6 +59,9 @@ public class Game {
 		
 		if (getFrame(frameIndex).isSpare()) {
 			if (frameIndex == frames.size()) {
+				if (bonus != 0 ) {
+					return getFrame(frameIndex).getScore() + bonus;
+				}
 				throw new InCompleteSpareException("Spare is incomplete!");
 			}
 			
@@ -61,5 +70,10 @@ public class Game {
 		
 		return getFrame(frameIndex).getScore();
 	}
+
+	public void addBonusThrow(int i) {
+		bonus = i;
+	}
+
 
 }
