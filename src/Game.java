@@ -24,8 +24,13 @@ public class Game {
 	public int getScore() {
 		int sum = 0;
 		
-		for (int i = 1; i < frames.size() + 1; i++) {
+		for (int i = 1; i < frames.size(); i++) {
 			sum += getFrameScore(i);
+		}
+		
+		if (!frames.get(frames.size() - 1).isSpare() &&
+			!frames.get(frames.size() - 1).isStrike()) {
+			sum += frames.get(frames.size() - 1).getScore();
 		}
 		return sum;
 	}

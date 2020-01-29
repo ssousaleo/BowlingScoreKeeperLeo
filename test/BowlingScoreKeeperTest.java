@@ -206,15 +206,37 @@ public class BowlingScoreKeeperTest {
 			assertThat(e.getMessage(), is("Spare is incomplete!"));
 		}
 		
-	}
+	} 
 	
 	@Test 
 	public void canScoreAPartialGameIfLastIsNotSpareOrStrike() {
 		Game g = new Game();
 		g.roll(1, 5);
 		g.roll(3, 6);	
-		assertEquals(15, g.getScore());
+		assertThat(g.getScore(), is(15));
 	}
+	
+	@Test
+	public void checkResulOfPartialGameEndWithSpare() {
+		Game game = new Game();
+		
+		game.roll(1,9);
+		
+		assertThat(game.getScore(), is(0));
+		
+	}
+	
+	@Test
+	public void checkResulOfPartialGameEndWithStrike() {
+		Game game = new Game();
+		
+		game.roll(3, 2);
+		game.roll(0, 2);
+		game.roll(10, 0); 
+		
+		assertThat(game.getScore(), is(7));
+		
+	} 
 	
 	private Game getCompleteGame() {
 		Game game = new Game();
