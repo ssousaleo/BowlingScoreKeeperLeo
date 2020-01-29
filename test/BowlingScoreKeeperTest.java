@@ -308,6 +308,9 @@ public class BowlingScoreKeeperTest {
 		assertThat(game.getScore(), is(300));
 	}
 	
+	
+	
+	
 	private Game getCompleteGame() {
 		Game game = new Game();
 		
@@ -419,6 +422,25 @@ public class BowlingScoreKeeperTest {
 		game.addBonusThrow(10);
 		game.addBonusThrow(10);
 		// has score 300
+		return game;	
+	}
+	
+	private Game getComplexGame() {
+		Game game = new Game();
+		
+		game.roll(6, 3);
+		game.roll(7, 1);
+		game.roll(8, 2);
+		game.roll(7, 2);
+		game.roll(10, 0);
+		game.roll(6, 2);
+		game.roll(7, 3);
+		game.roll(10, 0);
+		game.roll(8, 0);
+		game.roll(5, 5);
+		
+		game.addBonusThrow(10);
+		// has score 135
 		return game;	
 	}
 
