@@ -7,6 +7,11 @@ public class Frame {
 		if (throw1 < 0 || throw2 < 0) {
 			throw new InvalidFrameException("Do not add a negative throw!");
 		}
+		
+		if (throw1 + throw2 > 10) {
+			throw new InvalidFrameException("Max pin rolls cannot exceed ten!");
+		}
+		
 		this.throw1 = throw1;
 		this.throw2 = throw2;
 	}

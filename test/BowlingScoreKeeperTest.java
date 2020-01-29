@@ -63,10 +63,10 @@ public class BowlingScoreKeeperTest {
 		
 		try {
 			game.roll(3, 5);
-			fail("Should no allow to add an extra game to a complete game");
+			fail("Should no allow to add an extra game to a complete game!");
 			
 		} catch(InvalidGameException e) {
-			assertThat(e.getMessage(), is("Attemp to add an extra frame to a complete game"));
+			assertThat(e.getMessage(), is("Attemp to add an extra frame to a complete game!"));
 		}
 		
 		
@@ -93,10 +93,23 @@ public class BowlingScoreKeeperTest {
 		
 		try {
 			game.roll(-1, 4);
-			fail("Throw cannot be negative");
+			fail("Throw cannot be negative!");
 			
 		} catch(InvalidFrameException e) {
 			assertThat(e.getMessage(), is("Do not add a negative throw!"));
+		}
+	}
+	
+	@Test
+	public void totalPinsKnockedCannotExceedTen() {
+		Game game = new Game();
+		
+		try {
+			game.roll(7, 4);
+			fail("Total pins rolls cannot exceed ten!");
+			
+		} catch(InvalidFrameException e) {
+			assertThat(e.getMessage(), is("Max pin rolls cannot exceed ten!"));
 		}
 	}
 	
