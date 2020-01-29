@@ -193,6 +193,21 @@ public class BowlingScoreKeeperTest {
 		assertThat(game.getScore(), is(88));
 	}
 	
+	@Test
+	public void verifyIncompleteSpare() {
+		Game game = new Game();
+		
+		game.roll(1, 9);
+
+		try {
+			game.getFrameScore(1);
+			fail("Cannot show score for spare incomplete!");
+		} catch (InCompleteSpareException e) {
+			assertThat(e.getMessage(), is("Spare is incomplete!"));
+		}
+		
+	}
+	
 	
 	private Game getCompleteGame() {
 		Game game = new Game();

@@ -40,6 +40,9 @@ public class Game {
 		}
 		
 		if (getFrame(frameIndex).isSpare()) {
+			if (frameIndex == frames.size()) {
+				throw new InCompleteSpareException("Spare is incomplete!");
+			}
 			
 			return getFrame(frameIndex).getScore() + getFrame(frameIndex + 1).getThrow1(); 
 		}
