@@ -34,7 +34,7 @@ public class Game {
 		if (getFrame(frameIndex).isStrike()) {
 			return getFrame(frameIndex).getScore() + getFrame(frameIndex + 1).getScore(); 
 		}
-		return 0;
+		return getFrame(frameIndex).getScore();
 	}
 
 }
