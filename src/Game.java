@@ -21,4 +21,13 @@ public class Game {
 		return frames.size() == MAX_FRAMES;
 	}
 
+	public int getScore() {
+		int sum = 0;
+		
+		for (Frame f : frames) {
+			sum += f.getScore();
+		}
+		return sum;
+	}
+
 }

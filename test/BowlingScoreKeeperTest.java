@@ -113,6 +113,13 @@ public class BowlingScoreKeeperTest {
 		}
 	}
 	
+	@Test
+	public void gameScoreEqualsToSumOfFrameScore() {
+		Game game = getCompleteGame();
+		
+		assertThat(game.getScore(), is(81));
+	}
+	
 	private Game getCompleteGame() {
 		Game game = new Game();
 		
