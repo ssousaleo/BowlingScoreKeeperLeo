@@ -24,8 +24,8 @@ public class Game {
 	public int getScore() {
 		int sum = 0;
 		
-		for (Frame f : frames) {
-			sum += f.getScore();
+		for (int i = 1; i < frames.size() + 1; i++) {
+			sum += getFrameScore(i);
 		}
 		return sum;
 	}

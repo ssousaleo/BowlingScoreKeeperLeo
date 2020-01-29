@@ -147,11 +147,35 @@ public class BowlingScoreKeeperTest {
 		assertThat(game.getFrameScore(2), is(9));
 	}
 	
+	@Test
+	public void theSumOfFrameScoresWithFrameStrikeScoreProperlyComputed() {
+		Game game = getCompleteGameWithStrike();
+		
+		assertThat(game.getScore(), is(94));
+	}
+	
 	
 	private Game getCompleteGame() {
 		Game game = new Game();
 		
 		game.roll(1, 5);
+		game.roll(3, 6);
+		game.roll(7, 2);
+		game.roll(3, 6);
+		game.roll(4, 4);
+		game.roll(5, 3);
+		game.roll(3, 3);
+		game.roll(4, 5);
+		game.roll(8, 1);
+		game.roll(2, 6);
+		
+		return game;
+	}
+	
+	private Game getCompleteGameWithStrike() {
+		Game game = new Game();
+		
+		game.roll(10, 0);
 		game.roll(3, 6);
 		game.roll(7, 2);
 		game.roll(3, 6);
