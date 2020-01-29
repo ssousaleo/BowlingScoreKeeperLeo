@@ -30,4 +30,11 @@ public class Game {
 		return sum;
 	}
 
+	public int getFrameScore(int frameIndex) {
+		if (getFrame(frameIndex).isStrike()) {
+			return getFrame(frameIndex).getScore() + getFrame(frameIndex + 1).getScore(); 
+		}
+		return 0;
+	}
+
 }

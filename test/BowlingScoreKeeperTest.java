@@ -127,6 +127,16 @@ public class BowlingScoreKeeperTest {
 		assertThat(frame.isStrike(), is(true));
 	}
 	
+	@Test
+	public void properScoreOfStrikeEqualsTenPlusNextTwoThrows() {
+		Game game = new Game();
+		
+		game.roll(10, 0);
+		game.roll(3, 6);
+		
+		assertThat(game.getFrameScore(1), is(19));
+	}
+	
 	private Game getCompleteGame() {
 		Game game = new Game();
 		
