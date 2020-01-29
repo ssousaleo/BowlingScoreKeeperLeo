@@ -23,6 +23,14 @@ public class BowlingScoreKeeperTest {
 	}
 	
 	
+	@Test
+	public void aFrameHasTwoThrows() {
+		Frame f = new Frame();
+		f.roll(5, 3);
+		assertThat(f.getThrow1(), is(5));
+		assertThat(f.getThrow2(), is(3));
+	}
+	
 	
 	
 	
