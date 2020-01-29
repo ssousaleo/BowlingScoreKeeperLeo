@@ -236,7 +236,19 @@ public class BowlingScoreKeeperTest {
 		
 		assertThat(game.getScore(), is(7));
 		
-	} 
+	}
+	
+	@Test
+	public void calculateTheScoreOfSpareAfterStrike() {
+		Game game = new Game();
+		
+		game.roll(10, 0);
+		game.roll(4, 6);
+		game.roll(7, 2); 
+		
+		assertThat(game.getFrameScore(1), is(20));
+		assertThat(game.getFrameScore(2), is(17));
+	}
 	
 	private Game getCompleteGame() {
 		Game game = new Game();
@@ -287,6 +299,24 @@ public class BowlingScoreKeeperTest {
 		game.roll(2, 6);
 		
 		return game;
+	}
+	
+	private Game aCompleteGameWithAStrikeFollowedByASpare() {
+		Game game = new Game();
+		
+		game.roll(10, 0);
+		game.roll(4, 6);
+		game.roll(7, 2);
+		game.roll(3, 6);
+		game.roll(4, 4);
+		game.roll(5, 3);
+		game.roll(3, 3);
+		game.roll(4, 5);
+		game.roll(8, 1);
+		game.roll(2, 6);
+		
+		// has score 103
+		return game;	
 	}
 
 }
