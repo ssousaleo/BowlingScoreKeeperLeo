@@ -154,6 +154,21 @@ public class BowlingScoreKeeperTest {
 		assertThat(game.getScore(), is(94));
 	}
 	
+	@Test
+	public void verifyIncompleteStrike() {
+		Game game = new Game();
+		
+		game.roll(10, 0);
+
+		try {
+			game.getFrameScore(1);
+			fail("Cannot show score for strike incomplete!");
+		} catch (InCompleteStrikeException e) {
+			assertThat(e.getMessage(), is("Strike is incomplete!"));
+		}
+		
+	}
+	
 	
 	private Game getCompleteGame() {
 		Game game = new Game();

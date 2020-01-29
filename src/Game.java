@@ -32,6 +32,10 @@ public class Game {
 
 	public int getFrameScore(int frameIndex) {
 		if (getFrame(frameIndex).isStrike()) {
+			if (frameIndex == frames.size()) {
+				throw new InCompleteStrikeException("Strike is incomplete!");
+			}
+			
 			return getFrame(frameIndex).getScore() + getFrame(frameIndex + 1).getScore(); 
 		}
 		return getFrame(frameIndex).getScore();
