@@ -301,6 +301,12 @@ public class BowlingScoreKeeperTest {
 		assertThat(game.getScore(), is(93));
 	}
 	
+	@Test
+	public void calculateScoreForPerfectGame() {
+		Game game = getPerfectGame();
+		
+		assertThat(game.getScore(), is(300));
+	}
 	
 	private Game getCompleteGame() {
 		Game game = new Game();
@@ -403,6 +409,17 @@ public class BowlingScoreKeeperTest {
 		game.roll(10, 0);
 		
 		return game;
+	}
+	
+	private Game getPerfectGame() {
+		Game game = new Game();
+		for (int i = 1; i <= 10; i++) {
+			game.roll(10, 0);
+		}	
+		game.addBonusThrow(10);
+		game.addBonusThrow(10);
+		// has score 300
+		return game;	
 	}
 
 }

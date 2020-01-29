@@ -56,6 +56,10 @@ public class Game {
 			}
 			
 			if (getFrame(frameIndex + 1).isStrike()) {
+				if (frameIndex + 2 > frames.size()) {
+					return getFrame(frameIndex).getScore() + 
+							getFrame(frameIndex + 1).getScore() + bonus1;
+				}
 				return getFrame(frameIndex).getScore() + 
 						getFrame(frameIndex + 1).getScore() +
 						getFrame(frameIndex + 2).getThrow1();
