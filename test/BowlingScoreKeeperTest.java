@@ -293,6 +293,14 @@ public class BowlingScoreKeeperTest {
 		assertThat(game.getScore(), is(92));
 	}
 	
+	@Test
+	public void calculateScoreForSpareAsTheLastFrameWithBonusStrike() {
+		Game game = getCompleteGameWithLastFrameAsASpare();
+		game.addBonusThrow(10);
+		
+		assertThat(game.getScore(), is(93));
+	}
+	
 	
 	private Game getCompleteGame() {
 		Game game = new Game();
