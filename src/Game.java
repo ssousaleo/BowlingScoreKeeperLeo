@@ -45,10 +45,14 @@ public class Game {
 		return score;
 	}
 
-	public int getFrameScore(int i) {
+	public int getFrameScore(int i) throws IncompleteStrikeScoreException {
 		int score = 0;
 		Frame f = frames.get(i - 1);
 		if (f.isStrike()) {
+			if(frames.size() == i)
+			{
+				throw new IncompleteStrikeScoreException();
+			}
 			score += f.getScore() + frames.get(i).getScore();
 		}
 		else {

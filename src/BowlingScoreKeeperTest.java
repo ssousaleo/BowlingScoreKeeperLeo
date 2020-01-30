@@ -129,6 +129,13 @@ public class BowlingScoreKeeperTest {
 		assertThat(game.getScore(), is(94) );
 	}
 	
+	@Test(expected = IncompleteStrikeScoreException.class)
+	public void unKnownScoreforAStrikeFrameifNoNextFrame() {
+		Game g = new Game();
+		g.roll(10, 0);
+		g.getFrameScore(1);
+	}
+	
 	private Game getCompleteGame() {
 		Game g = new Game();
 		
