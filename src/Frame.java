@@ -35,6 +35,7 @@ public class Frame {
 
 	public boolean isStrike() {
 		return throw1 == 10;
-	}	
+	}
+
 
 }

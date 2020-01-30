@@ -44,6 +44,18 @@ public class Game {
 		}
 		return score;
 	}
+
+	public int getFrameScore(int i) {
+		int score = 0;
+		Frame f = frames.get(i - 1);
+		if (f.isStrike()) {
+			score += f.getScore() + frames.get(i).getScore();
+		}
+		else {
+			score += f.getScore();
+		}
+		return score;
+	}
 	
 
 }
