@@ -71,6 +71,12 @@ public class BowlingScoreKeeperTest {
 		assertThat(f.getThrow2(), is(4));
 	}
 	
+	@Test(expected = InvalidFrameException.class)
+	public void aFrameCantHaveANegtiveThrow() {
+		Frame f = new Frame();
+		f.roll(-1, 2);
+	}	
+	
 	
 	
 	private Game getCompleteGame() {

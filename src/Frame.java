@@ -7,7 +7,10 @@ public class Frame {
 		
 	}
 
-	public void roll(int throw1, int throw2) {
+	public void roll(int throw1, int throw2) throws InvalidFrameException {
+		if (throw1 < 0 || throw2 < 0)
+			throw new InvalidFrameException();
+		
 		this.throw1 = throw1;
 		this.throw2 = throw2;
 	}
