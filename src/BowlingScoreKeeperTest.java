@@ -63,6 +63,16 @@ public class BowlingScoreKeeperTest {
 		g.roll(2, 5);
 	}
 	
+	@Test
+	public void canAccessFramesInGameIndividually() {
+		Game g = getCompleteGame();
+		Frame f = g.getFrame(5);
+		assertThat(f.getThrow1(), is(4));
+		assertThat(f.getThrow2(), is(4));
+	}
+	
+	
+	
 	private Game getCompleteGame() {
 		Game g = new Game();
 		
