@@ -3,12 +3,17 @@ public class Frame {
 	private int throw1;
 	private int throw2;
 	
+	private final int MAX_PINS = 10;
+	
 	public Frame() {
 		
 	}
 
 	public void roll(int throw1, int throw2) throws InvalidFrameException {
 		if (throw1 < 0 || throw2 < 0)
+			throw new InvalidFrameException();
+		
+		if (throw1 + throw2 > MAX_PINS)
 			throw new InvalidFrameException();
 		
 		this.throw1 = throw1;

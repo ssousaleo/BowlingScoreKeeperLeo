@@ -75,7 +75,13 @@ public class BowlingScoreKeeperTest {
 	public void aFrameCantHaveANegtiveThrow() {
 		Frame f = new Frame();
 		f.roll(-1, 2);
-	}	
+	}
+	
+	@Test(expected = InvalidFrameException.class)
+	public void aFrameCanNotExceedMaxPins() {
+		Frame f = new Frame();
+		f.roll(1, 10);
+	}
 	
 	
 	
