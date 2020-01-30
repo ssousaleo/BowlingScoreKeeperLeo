@@ -57,6 +57,12 @@ public class BowlingScoreKeeperTest {
 		
 	}
 	
+	@Test(expected = InvalidGameException.class)
+	public void unableToAddAnotherFrameToCompleteGame() {
+		Game g = getCompleteGame();
+		g.roll(2, 5);
+	}
+	
 	private Game getCompleteGame() {
 		Game g = new Game();
 		

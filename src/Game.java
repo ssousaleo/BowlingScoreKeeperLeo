@@ -18,10 +18,15 @@ public class Game {
 		return frames.get(index - 1);
 	}
 
-	public void roll(int i, int j) {
+	public void roll(int i, int j) throws InvalidGameException {
+		if(isComplete()) {
+			throw new InvalidGameException();
+		}
+		
 		Frame f = new Frame();
 		f.roll(i, j);
 		addFrame(f);
+		
 	}
 
 	public boolean isComplete() {
