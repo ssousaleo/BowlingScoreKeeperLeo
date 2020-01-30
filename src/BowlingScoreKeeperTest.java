@@ -31,6 +31,15 @@ public class BowlingScoreKeeperTest {
 		assertThat(f.getThrow2(), is(3));
 	}
 	
+	@Test
+	public void frameScoreIsSumOfThrows() {
+		Frame f = new Frame();
+		f.roll(2, 6);
+		
+		assertThat(f.getScore(), is(8));
+	}
+	
+	
 	
 	
 	

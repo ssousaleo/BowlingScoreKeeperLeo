@@ -18,6 +18,10 @@ public class Frame {
 	
 	public int getThrow2() {
 		return throw2;
+	}
+
+	public int getScore() {
+		return throw1 + throw2;
 	}	
 
 }
