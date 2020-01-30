@@ -135,6 +135,15 @@ public class BowlingScoreKeeperTest {
 		g.roll(10, 0);
 		g.getFrameScore(1);
 	}
+	
+	@Test
+	public void canGetProperScoreOfAGameWithSpareFrame() {
+		Game g = new Game();
+		g.roll(1, 9);
+		assertTrue(g.getFrame(1).isSpare());
+		g.roll(3, 6);
+		assertThat(g.getFrameScore(1), is(13));
+	}
 
 	@Test
 	public void checkIfAFrameIsSpare() {
