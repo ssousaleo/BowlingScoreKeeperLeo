@@ -37,5 +37,9 @@ public class Frame {
 		return throw1 == 10;
 	}
 
+	public boolean isSpare() {
+		return getScore() == MAX_PINS && !isStrike();
+	}
+
 
 }
