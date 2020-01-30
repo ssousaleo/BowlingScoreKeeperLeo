@@ -83,6 +83,25 @@ public class BowlingScoreKeeperTest {
 		f.roll(1, 10);
 	}
 	
+	@Test
+	public void aFrameCanNotExceedMaxPinsCatchException() {
+		Frame f = new Frame();
+		
+		try {
+			f.roll(1, 10);
+			fail("Should not allow more than ten pins!");
+		} catch(InvalidFrameException e) {
+			assertThat(e.getMessage(), is("Max Sum of Pins not allowed!"));
+		}
+		
+		
+	}
+	
+	@Test
+	public void scoreOfAGameIsSumOfItsFrameScores() {
+		Game g = getCompleteGame();
+		assertThat(g.getScore(), is(81));
+	}
 	
 	
 	private Game getCompleteGame() {

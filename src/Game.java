@@ -36,6 +36,14 @@ public class Game {
 		}
 		return false;
 	}
+
+	public int getScore() {
+		int score = 0;
+		for (Frame f : frames) {
+			score += f.getScore();
+		}
+		return score;
+	}
 	
 
 }

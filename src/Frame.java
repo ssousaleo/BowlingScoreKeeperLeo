@@ -14,7 +14,7 @@ public class Frame {
 			throw new InvalidFrameException();
 		
 		if (throw1 + throw2 > MAX_PINS)
-			throw new InvalidFrameException();
+			throw new InvalidFrameException("Max Sum of Pins not allowed!");
 		
 		this.throw1 = throw1;
 		this.throw2 = throw2;
