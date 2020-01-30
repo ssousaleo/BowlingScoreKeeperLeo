@@ -153,6 +153,12 @@ public class BowlingScoreKeeperTest {
 		
 	}
 	
+	@Test
+	public void canGetValidScoreForGameWithSpare() {
+		Game game = getCompleteGameWithSpare();
+		assertThat(game.getScore(), is(88) );
+	}
+	
 	private Game getCompleteGame() {
 		Game g = new Game();
 		
@@ -176,6 +182,23 @@ public class BowlingScoreKeeperTest {
 		Game g = new Game();
 		
 		g.roll(10, 0);
+		g.roll(3, 6);
+		g.roll(7, 2);
+		g.roll(3, 6);
+		g.roll(4, 4);
+		g.roll(5, 3);
+		g.roll(3, 3);
+		g.roll(4, 5);
+		g.roll(8, 1);
+		g.roll(2, 6);
+		
+		return g;
+	}
+	
+	private Game getCompleteGameWithSpare() {
+		Game g = new Game();
+		
+		g.roll(1, 9);
 		g.roll(3, 6);
 		g.roll(7, 2);
 		g.roll(3, 6);
