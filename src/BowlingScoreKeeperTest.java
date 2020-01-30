@@ -103,6 +103,13 @@ public class BowlingScoreKeeperTest {
 		assertThat(g.getScore(), is(81));
 	}
 	
+	@Test
+	public void checkFrameIsStrike() {
+		Frame f = new Frame();
+		f.roll(10, 0);
+		assertThat(f.isStrike(), is(true));
+	}
+	
 	
 	private Game getCompleteGame() {
 		Game g = new Game();

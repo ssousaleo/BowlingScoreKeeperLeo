@@ -3,6 +3,7 @@ public class Frame {
 	private int throw1;
 	private int throw2;
 	
+	
 	private final int MAX_PINS = 10;
 	
 	public Frame() {
@@ -30,6 +31,10 @@ public class Frame {
 
 	public int getScore() {
 		return throw1 + throw2;
+	}
+
+	public boolean isStrike() {
+		return throw1 == 10;
 	}	
 
 }
