@@ -39,6 +39,17 @@ public class BowlingScoreKeeperTest {
 		assertThat(f.getScore(), is(8));
 	}
 	
+	@Test
+	public void canAddAndGetAFrameFromGame() {
+		Frame f1 = new Frame();
+		f1.roll(1, 5);
+		Game g = new Game();
+		g.addFrame(f1);
+		Frame f2 = g.getFrame(1);
+		assertThat(f2.getThrow1(), is(1));
+		assertThat(f2.getThrow2(), is(5));
+	}
+	
 	
 	
 	
