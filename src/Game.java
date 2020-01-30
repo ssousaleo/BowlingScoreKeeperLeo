@@ -39,8 +39,8 @@ public class Game {
 
 	public int getScore() {
 		int score = 0;
-		for (Frame f : frames) {
-			score += f.getScore();
+		for (int i = 1; i <= frames.size(); i++) {
+			score += this.getFrameScore(i);
 		}
 		return score;
 	}
